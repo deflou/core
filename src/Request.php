@@ -214,7 +214,13 @@ class Request
         }
 
         self::$telegram = $telegram;
-        self::setClient(new Client(['base_uri' => self::$api_base_uri]));
+        $options = ['base_uri' => self::$api_base_uri];
+        
+        if ($proxyString = getenv('TG_BOT__PROXY_STRING')) {
+            $options['proxy'] = $proxyString;
+        }
+
+        self::setClient(new Client($options));
     }
 
     /**
