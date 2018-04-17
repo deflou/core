@@ -215,7 +215,7 @@ class Request
 
         self::$telegram = $telegram;
         $options = ['base_uri' => self::$api_base_uri];
-        
+
         if ($proxyString = getenv('TG_BOT__PROXY_STRING')) {
             $options['proxy'] = $proxyString;
         }
